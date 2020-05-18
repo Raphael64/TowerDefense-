@@ -1,7 +1,7 @@
 #include "towerposition.h"
 #include <QPainter>
 
-const QSize TowerPosition::ms_fixedSize(44, 44);
+const QSize TowerPosition::ms_fixedSize(88, 88);
 
 TowerPosition::TowerPosition(QPoint pos, const QPixmap &sprite/* = QPixmap(":/image/open_spot.png")*/)
 	: m_hasTower(false)
@@ -12,7 +12,7 @@ TowerPosition::TowerPosition(QPoint pos, const QPixmap &sprite/* = QPixmap(":/im
 
 const QPoint TowerPosition::centerPos() const
 {
-	QPoint offsetPoint(ms_fixedSize.width() / 2, ms_fixedSize.height() / 2);
+    QPoint offsetPoint(ms_fixedSize.width() /2, ms_fixedSize.height() /2);
 	return m_pos + offsetPoint;
 }
 

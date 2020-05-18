@@ -9,11 +9,11 @@
 #include <QVector2D>
 #include <QtMath>
 
-const QSize Tower::ms_fixedSize(42, 42);
+const QSize Tower::ms_fixedSize(84, 84);
 
 Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/tower.png"*/)
 	: m_attacking(false)
-	, m_attackRange(70)
+    , m_attackRange(140)
 	, m_damage(10)
 	, m_fireRate(1000)
 	, m_rotationSprite(0.0)

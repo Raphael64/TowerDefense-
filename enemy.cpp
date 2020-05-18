@@ -11,16 +11,16 @@
 #include <QVector2D>
 #include <QtMath>
 
-static const int Health_Bar_Width = 20;
+static const int Health_Bar_Width = 40;
 
-const QSize Enemy::ms_fixedSize(52, 52);
+const QSize Enemy::ms_fixedSize(104, 104);
 
 Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
 	, m_active(false)
-	, m_maxHp(40)
+    , m_maxHp(40)
 	, m_currentHp(40)
-	, m_walkingSpeed(1.0)
+    , m_walkingSpeed(2.0)
 	, m_rotationSprite(0.0)
 	, m_pos(startWayPoint->pos())
 	, m_destinationWayPoint(startWayPoint->nextWayPoint())
@@ -87,15 +87,15 @@ void Enemy::draw(QPainter *painter) const
 
 	painter->save();
 
-	QPoint healthBarPoint = m_pos + QPoint(-Health_Bar_Width / 2 - 5, -ms_fixedSize.height() / 3);
+    QPoint healthBarPoint = m_pos + QPoint(-Health_Bar_Width / 2, -ms_fixedSize.height() / 2);
 	// 绘制血条
 	painter->setPen(Qt::NoPen);
 	painter->setBrush(Qt::red);
-	QRect healthBarBackRect(healthBarPoint, QSize(Health_Bar_Width, 2));
+    QRect healthBarBackRect(healthBarPoint, QSize(Health_Bar_Width, 4));
 	painter->drawRect(healthBarBackRect);
 
 	painter->setBrush(Qt::green);
-	QRect healthBarRect(healthBarPoint, QSize((double)m_currentHp / m_maxHp * Health_Bar_Width, 2));
+    QRect healthBarRect(healthBarPoint, QSize((double)m_currentHp / m_maxHp * Health_Bar_Width, 4));
 	painter->drawRect(healthBarRect);
 
 	// 绘制偏转坐标,由中心+偏移=左上

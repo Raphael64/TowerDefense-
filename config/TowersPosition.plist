@@ -4,75 +4,75 @@
 <array>
 	<dict>
 		<key>x</key>
-		<integer>65</integer>
+                <integer>130</integer>
 		<key>y</key>
-		<integer>220</integer>
+                <integer>440</integer>
 	</dict>
 	<dict>
 		<key>x</key> 
-		<integer>155</integer>
+                <integer>310</integer>
 		<key>y</key>
-		<integer>220</integer>
+                <integer>440</integer>
 	</dict>
 	<dict>
 		<key>x</key> 
-		<integer>245</integer>
+                <integer>490</integer>
 		<key>y</key>
-		<integer>220</integer>
+                <integer>440</integer>
 	</dict>
 	<dict>
 		<key>x</key> 
-		<integer>335</integer>
+                <integer>670</integer>
 		<key>y</key>
-		<integer>220</integer>
+                <integer>440</integer>
 	</dict>
     <dict>
 		<key>x</key> 
-		<integer>100</integer>
+                <integer>200</integer>
 		<key>y</key>
-		<integer>125</integer>
+                <integer>250</integer>
 	</dict>
 	<dict>
 		<key>x</key> 
-		<integer>195</integer>
+                <integer>390</integer>
 		<key>y</key>
-		<integer>125</integer>
+                <integer>250</integer>
 	</dict>
 	<dict>
 		<key>x</key> 
-		<integer>280</integer>
+                <integer>560</integer>
 		<key>y</key>
-		<integer>125</integer>
+                <integer>250</integer>
 	</dict>
 	<dict>
 		<key>x</key> 
-		<integer>370</integer>
+                <integer>740</integer>
 		<key>y</key>
-		<integer>125</integer>
+                <integer>250</integer>
 	</dict>
     <dict>
 		<key>x</key> 
-		<integer>80</integer>
+                <integer>160</integer>
 		<key>y</key>
-		<integer>35</integer>
+                <integer>70</integer>
 	</dict>
 	<dict>
 		<key>x</key>
-		<integer>170</integer>
+                <integer>340</integer>
 		<key>y</key>
-		<integer>35</integer>
+                <integer>70</integer>
 	</dict>
 	<dict>
 		<key>x</key>
-		<integer>260</integer>
+                <integer>520</integer>
 		<key>y</key>
-		<integer>35</integer>
+                <integer>70</integer>
 	</dict>
 	<dict>
 		<key>x</key>
-		<integer>350</integer>
+                <integer>700</integer>
 		<key>y</key>
-		<integer>35</integer>
+                <integer>70</integer>
 	</dict>
 </array>
 </plist>

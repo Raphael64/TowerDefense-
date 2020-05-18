@@ -3,15 +3,15 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 
-// 为了解决mac下声音无法输出,总之发现使用绝对路径可以完成目标,蛋疼,因此以此种方式暂时处理
-static const QString s_curDir = QDir::currentPath() + "/";
 
+static const QString s_curDir = QDir::currentPath() + "\\";
+QMediaPlayer *player =new QMediaPlayer;
 AudioPlayer::AudioPlayer(QObject *parent)
 	: QObject(parent)
 	, m_backgroundMusic(NULL)
 {
 	// 创建一直播放的背景音乐
-	QUrl backgroundMusicUrl = QUrl::fromLocalFile(s_curDir + "music/8bitDungeonLevel.mp3");
+    QUrl backgroundMusicUrl = QUrl::fromLocalFile("E:\\Code\\C++2020\\TowerDefenseQt\\music\\8bitDungeonLevel.mp3");
 	if (QFile::exists(backgroundMusicUrl.toLocalFile()))
 	{
 		m_backgroundMusic = new QMediaPlayer(this);
@@ -36,10 +36,10 @@ void AudioPlayer::playSound(SoundType soundType)
 {
 	static const QUrl mediasUrls[] =
 	{
-		QUrl::fromLocalFile(s_curDir + "music/tower_place.wav"),
-		QUrl::fromLocalFile(s_curDir + "music/life_lose.wav"),
-		QUrl::fromLocalFile(s_curDir + "music/laser_shoot.wav"),
-		QUrl::fromLocalFile(s_curDir + "music/enemy_destroy.wav")
+        QUrl::fromLocalFile( "E:\\Code\\C++2020\\TowerDefenseQt\\music\\tower_place.wav"),
+        QUrl::fromLocalFile("E:\\Code\\C++2020\\TowerDefenseQt\\music\\life_lose.wav"),
+        QUrl::fromLocalFile("E:\\Code\\C++2020\\TowerDefenseQt\\music\\laser_shoot.wav"),
+        QUrl::fromLocalFile( "E:\\Code\\C++2020\\TowerDefenseQt\\music\\enemy_destroy.wav")
 	};
 	static QMediaPlayer player;
 
