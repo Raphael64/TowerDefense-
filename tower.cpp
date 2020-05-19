@@ -37,11 +37,11 @@ void Tower::checkEnemyInRange()
 	if (m_chooseEnemy)
 	{
 		// 这种情况下,需要旋转炮台对准敌人
-		// 向量标准化
-		QVector2D normalized(m_chooseEnemy->pos() - m_pos);
-		normalized.normalize();
-		m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) - 90;
-
+        // 向量标准化,但是已取消炮塔旋转操作,主要是没必要
+        /*QVector2D normalized(m_chooseEnemy->pos() - m_pos);
+        normalized.normalize();
+        m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) - 90;
+         */
 		// 如果敌人脱离攻击范围
 		if (!collisionWithCircle(m_pos, m_attackRange, m_chooseEnemy->pos(), 1))
 			lostSightOfEnemy();
@@ -62,16 +62,17 @@ void Tower::checkEnemyInRange()
 }
 
 void Tower::draw(QPainter *painter) const
-{
-	painter->save();
+{   //画范围时竟然没有魔鬼数字
+    painter->save();
 	painter->setPen(Qt::white);
 	// 绘制攻击范围
-	painter->drawEllipse(m_pos, m_attackRange, m_attackRange);
+    //painter->drawEllipse(m_pos, m_attackRange, m_attackRange);
+    //就不绘制初等炮塔的攻击范围了
 
 	// 绘制偏转坐标,由中心+偏移=左上
 	static const QPoint offsetPoint(-ms_fixedSize.width() / 2, -ms_fixedSize.height() / 2);
 	// 绘制炮塔并选择炮塔
-	painter->translate(m_pos);
+    painter->translate(m_pos);
 	painter->rotate(m_rotationSprite);
 	painter->drawPixmap(offsetPoint, m_sprite);
 	painter->restore();

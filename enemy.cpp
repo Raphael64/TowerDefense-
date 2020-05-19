@@ -77,7 +77,8 @@ void Enemy::move()
 
 	// 确定敌人选择方向
 	// 默认图片向左,需要修正180度转右
-	m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) + 180;
+    //m_rotationSprite = qRadiansToDegrees(qAtan2(normalized.y(), normalized.x())) + 180;
+    //将这行隐去后不再使敌人翻转
 }
 
 void Enemy::draw(QPainter *painter) const
@@ -99,9 +100,9 @@ void Enemy::draw(QPainter *painter) const
 	painter->drawRect(healthBarRect);
 
 	// 绘制偏转坐标,由中心+偏移=左上
-	static const QPoint offsetPoint(-ms_fixedSize.width() / 2, -ms_fixedSize.height() / 2);
-	painter->translate(m_pos);
-	painter->rotate(m_rotationSprite);
+    static const QPoint offsetPoint(-ms_fixedSize.width() / 2, -ms_fixedSize.height() / 2);
+    painter->translate(m_pos);
+    painter->rotate(m_rotationSprite);
 	// 绘制敌人
 	painter->drawPixmap(offsetPoint, m_sprite);
 

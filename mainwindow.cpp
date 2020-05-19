@@ -137,21 +137,30 @@ bool MainWindow::canBuyTower() const
 }
 
 void MainWindow::drawWave(QPainter *painter)
-{
-	painter->setPen(QPen(Qt::red));
-    painter->drawText(QRect(800, 10, 200, 50), QString("WAVE : %1").arg(m_waves + 1));
+{    QFont font;
+     font.setPixelSize(24); //设置字体像素大小
+     font.setPointSize(15);//文字大小
+     font.setItalic(true);//斜体
+     font.setBold(true);
+     QString text=QString("WAVE : %1").arg(m_waves + 1);
+      QFontMetrics metrics(font);
+
+
+      painter->setFont(font);//设置文本至关重要的一步
+      painter->setPen(QPen(QColor(195, 0,0), 5));
+     painter->drawText(QRect(600, 10, 200, 50), QString(text));
 }
 
 void MainWindow::drawHP(QPainter *painter)
 {
-	painter->setPen(QPen(Qt::red));
-    painter->drawText(QRect(60, 10, 200, 50), QString("HP : %1").arg(m_playerHp));
+      painter->setPen(QPen(QColor(195, 0,0), 5));
+    painter->drawText(QRect(250, 10, 200, 50), QString("HP : %1").arg(m_playerHp));
 }
 
 void MainWindow::drawPlayerGold(QPainter *painter)
 {
-    painter->setPen(QPen(Qt::red));
-    painter->drawText(QRect(400, 10, 400, 50), QString("GOLD : %1").arg(m_playrGold));
+      painter->setPen(QPen(QColor(195, 0,0), 5));
+    painter->drawText(QRect(400, 10, 200, 50), QString("GOLD : %1").arg(m_playrGold));
 }
 
 void MainWindow::doGameOver()
@@ -175,28 +184,32 @@ AudioPlayer *MainWindow::audioPlayer() const
 	return m_audioPlayer;
 }
 
-void MainWindow::addWayPoints()
-{
-    WayPoint *wayPoint1 = new WayPoint(QPoint(840, 570));
-	m_wayPointsList.push_back(wayPoint1);
+void MainWindow::addWayPoints()//从后往前
+{    WayPoint *wayPoint0 = new WayPoint(QPoint(680, 417));
+     m_wayPointsList.push_back(wayPoint0);
 
-    WayPoint *wayPoint2 = new WayPoint(QPoint(70, 570));
+
+    WayPoint *wayPoint1 = new WayPoint(QPoint(123, 417));
+	m_wayPointsList.push_back(wayPoint1);
+     wayPoint1->setNextWayPoint(wayPoint0);
+
+    WayPoint *wayPoint2 = new WayPoint(QPoint(123, 247));
 	m_wayPointsList.push_back(wayPoint2);
 	wayPoint2->setNextWayPoint(wayPoint1);
 
-    WayPoint *wayPoint3 = new WayPoint(QPoint(70, 390));
+    WayPoint *wayPoint3 = new WayPoint(QPoint(577, 247));
 	m_wayPointsList.push_back(wayPoint3);
 	wayPoint3->setNextWayPoint(wayPoint2);
 
-    WayPoint *wayPoint4 = new WayPoint(QPoint(890, 390));
+    WayPoint *wayPoint4 = new WayPoint(QPoint(577, 78));
 	m_wayPointsList.push_back(wayPoint4);
 	wayPoint4->setNextWayPoint(wayPoint3);
 
-    WayPoint *wayPoint5 = new WayPoint(QPoint(890, 200));
+    WayPoint *wayPoint5 = new WayPoint(QPoint(113, 75));
 	m_wayPointsList.push_back(wayPoint5);
 	wayPoint5->setNextWayPoint(wayPoint4);
 
-    WayPoint *wayPoint6 = new WayPoint(QPoint(70, 200));
+    WayPoint *wayPoint6 = new WayPoint(QPoint(113, 1));
 	m_wayPointsList.push_back(wayPoint6);
 	wayPoint6->setNextWayPoint(wayPoint5);
 }

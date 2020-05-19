@@ -4,7 +4,37 @@
 <array>
 	<dict>
 		<key>x</key>
+                <integer>147</integer>
+		<key>y</key>
                 <integer>130</integer>
+	</dict>
+	<dict>
+		<key>x</key> 
+                <integer>363</integer>
+		<key>y</key>
+                <integer>130</integer>
+	</dict>
+	<dict>
+		<key>x</key> 
+                <integer>660</integer>
+		<key>y</key>
+                <integer>130</integer>
+	</dict>
+	<dict>
+		<key>x</key> 
+                <integer>180</integer>
+		<key>y</key>
+                <integer>290</integer>
+	</dict>
+    <dict>
+		<key>x</key> 
+                <integer>453</integer>
+		<key>y</key>
+                <integer>290</integer>
+	</dict>
+	<dict>
+		<key>x</key> 
+                <integer>140</integer>
 		<key>y</key>
                 <integer>440</integer>
 	</dict>
@@ -16,63 +46,10 @@
 	</dict>
 	<dict>
 		<key>x</key> 
-                <integer>490</integer>
+                <integer>480</integer>
 		<key>y</key>
                 <integer>440</integer>
 	</dict>
-	<dict>
-		<key>x</key> 
-                <integer>670</integer>
-		<key>y</key>
-                <integer>440</integer>
-	</dict>
-    <dict>
-		<key>x</key> 
-                <integer>200</integer>
-		<key>y</key>
-                <integer>250</integer>
-	</dict>
-	<dict>
-		<key>x</key> 
-                <integer>390</integer>
-		<key>y</key>
-                <integer>250</integer>
-	</dict>
-	<dict>
-		<key>x</key> 
-                <integer>560</integer>
-		<key>y</key>
-                <integer>250</integer>
-	</dict>
-	<dict>
-		<key>x</key> 
-                <integer>740</integer>
-		<key>y</key>
-                <integer>250</integer>
-	</dict>
-    <dict>
-		<key>x</key> 
-                <integer>160</integer>
-		<key>y</key>
-                <integer>70</integer>
-	</dict>
-	<dict>
-		<key>x</key>
-                <integer>340</integer>
-		<key>y</key>
-                <integer>70</integer>
-	</dict>
-	<dict>
-		<key>x</key>
-                <integer>520</integer>
-		<key>y</key>
-                <integer>70</integer>
-	</dict>
-	<dict>
-		<key>x</key>
-                <integer>700</integer>
-		<key>y</key>
-                <integer>70</integer>
-	</dict>
+
 </array>
 </plist>
