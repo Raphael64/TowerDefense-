@@ -39,7 +39,7 @@
 			<key>spawnTime</key>
 			<integer>6000</integer>
 		</dict>
-	</array>
+        </array>//第一波
 	<array>
 		<dict> 
 			<key>data</key>
@@ -59,7 +59,45 @@
 			<key>spawnTime</key>
 			<integer>3000</integer>
 		</dict>
-	</array>
+        </array>//第二波
+        <array>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>100</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>500</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>600</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>1000</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>3000</integer>
+                </dict>
+                <dict>
+                        <key>data</key>
+                        <string></string>
+                        <key>spawnTime</key>
+                        <integer>6000</integer>
+                </dict>
+        </array>//第三波
 	<array>
 		<dict>
 			<key>data</key>
@@ -91,6 +129,6 @@
 			<key>spawnTime</key>
 			<integer>5000</integer>
 		</dict>
-	</array>
+        </array>//第四波
 </array>
 </plist>

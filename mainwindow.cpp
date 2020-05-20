@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include "waypoint.h"
 #include "enemy.h"
+
 #include "bullet.h"
 #include "audioplayer.h"
 #include "plistreader.h"
@@ -37,8 +38,8 @@ MainWindow::MainWindow(QWidget *parent)
 	connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
 	timer->start(30);
 
-	// 设置300ms后游戏启动
-	QTimer::singleShot(300, this, SLOT(gameStart()));
+    // 设置300ms后游戏启动
+    QTimer::singleShot(300, this, SLOT(gameStart()));
 }
 
 MainWindow::~MainWindow()
@@ -70,7 +71,7 @@ void MainWindow::loadTowerPositions()
 	file.close();
 }
 
-void MainWindow::paintEvent(QPaintEvent *)
+void MainWindow::paintEvent(QPaintEvent *)//报游戏结束事项
 {
 	if (m_gameEnded || m_gameWin)
 	{
@@ -82,7 +83,7 @@ void MainWindow::paintEvent(QPaintEvent *)
 	}
 
 	QPixmap cachePix(":/image/Bg.png");
-	QPainter cachePainter(&cachePix);
+    QPainter cachePainter(&cachePix);
 
 	foreach (const TowerPosition &towerPos, m_towerPositionsList)
 		towerPos.draw(&cachePainter);
@@ -94,7 +95,7 @@ void MainWindow::paintEvent(QPaintEvent *)
 		wayPoint->draw(&cachePainter);
 
 	foreach (const Enemy *enemy, m_enemyList)
-		enemy->draw(&cachePainter);
+        enemy->draw(&cachePainter);
 
 	foreach (const Bullet *bullet, m_bulletList)
 		bullet->draw(&cachePainter);
@@ -283,7 +284,7 @@ void MainWindow::preLoadWavesInfo()
 	file.close();
 }
 
-bool MainWindow::loadWave()
+bool MainWindow::loadWave()//读取波数,对添加新的敌人至关重要
 {
 	if (m_waves >= m_wavesInfo.size())
 		return false;
@@ -291,15 +292,20 @@ bool MainWindow::loadWave()
 	WayPoint *startWayPoint = m_wayPointsList.back();
 	QList<QVariant> curWavesInfo = m_wavesInfo[m_waves].toList();
 
-	for (int i = 0; i < curWavesInfo.size(); ++i)
-	{
+    for (int i = 0; i < curWavesInfo.size(); ++i)
+    {  Enemy *enemy = new Enemy(startWayPoint, this);
+        if(m_waves>=2)//不同关卡的不同敌人
+        {
+            enemy->upgrade();
+        }
 		QMap<QString, QVariant> dict = curWavesInfo[i].toMap();
 		int spawnTime = dict.value("spawnTime").toInt();
 
-		Enemy *enemy = new Enemy(startWayPoint, this);
+
 		m_enemyList.push_back(enemy);
 		QTimer::singleShot(spawnTime, enemy, SLOT(doActivate()));
-	}
+
+    }
 
 	return true;
 }
@@ -312,4 +318,5 @@ QList<Enemy *> MainWindow::enemyList() const
 void MainWindow::gameStart()
 {
 	loadWave();
+
 }

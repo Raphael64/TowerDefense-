@@ -11,21 +11,22 @@
 #include <QVector2D>
 #include <QtMath>
 
-static const int Health_Bar_Width = 40;
+static  int Health_Bar_Width = 40;//之后更改血量一定要记得改血条长度，改最大上限，该当前血量三个指标
 
 const QSize Enemy::ms_fixedSize(104, 104);
 
-Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/enemy.png")*/)
+Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, QPixmap sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
 	, m_active(false)
     , m_maxHp(40)
-	, m_currentHp(40)
+    , m_currentHp(40)
     , m_walkingSpeed(2.0)
 	, m_rotationSprite(0.0)
 	, m_pos(startWayPoint->pos())
 	, m_destinationWayPoint(startWayPoint->nextWayPoint())
 	, m_game(game)
-	, m_sprite(sprite)
+    , m_sprite(sprite)
+
 {
 }
 
@@ -148,4 +149,14 @@ void Enemy::gotLostSight(Tower *attacker)
 QPoint Enemy::pos() const
 {
 	return m_pos;
+}
+
+void Enemy::upgrade()
+{
+    Health_Bar_Width=100;
+    m_maxHp=100;
+    m_currentHp=100;
+    m_walkingSpeed=4.0;
+    m_sprite=QPixmap(":/image/enemy2.png");
+
 }

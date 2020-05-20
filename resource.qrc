@@ -7,11 +7,12 @@
         <file>image/icon_gold.png</file>
         <file>image/icon_HP.png</file>
         <file>image/open_spot.png</file>
+        <file>image/enemy2.png</file>
         <file>image/tower.png</file>
         <file>config/Info.plist</file>
         <file>config/TowersPosition.plist</file>
         <file>config/Waves.plist</file>
-        <file>music/8bitDungeonLevel.mp3</file>
+        <file>music/Bgmusic.mp3</file>
         <file>music/enemy_destroy.wav</file>
         <file>music/laser_shoot.wav</file>
         <file>music/life_lose.wav</file>
