@@ -6,7 +6,7 @@ const QSize TowerPosition::ms_fixedSize(88, 88);
 TowerPosition::TowerPosition(QPoint pos, const QPixmap &sprite/* = QPixmap(":/image/open_spot.png")*/)
 	: m_hasTower(false)
     , m_pos(pos)
-	, m_sprite(sprite)
+    , m_sprite(sprite)
 {
 }
 

@@ -22,7 +22,7 @@ public:
 private:
 	bool		m_hasTower;
 	QPoint		m_pos;
-	QPixmap		m_sprite;
+    QPixmap		m_sprite;
 
 	static const QSize ms_fixedSize;
 };

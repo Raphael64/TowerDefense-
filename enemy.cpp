@@ -153,10 +153,11 @@ QPoint Enemy::pos() const
 
 void Enemy::upgrade()
 {
-    Health_Bar_Width=100;
-    m_maxHp=100;
-    m_currentHp=100;
-    m_walkingSpeed=4.0;
+
+    Health_Bar_Width=80;
+    m_maxHp=80;
+    m_currentHp=80;
+    m_walkingSpeed=3.0;
     m_sprite=QPixmap(":/image/enemy2.png");
 
 }

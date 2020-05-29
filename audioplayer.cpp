@@ -23,7 +23,9 @@ AudioPlayer::AudioPlayer(QObject *parent)
         // 设置背景音乐循环播放
         backgroundMusicList->setPlaybackMode(QMediaPlaylist::CurrentItemInLoop);
         m_backgroundMusic->setPlaylist(backgroundMusicList);
+        m_backgroundMusic->setVolume(30);
     }
+
 }
 
 void AudioPlayer::startBGM()
@@ -46,7 +48,9 @@ void AudioPlayer::playSound(SoundType soundType)
     if (QFile::exists(mediasUrls[soundType].toLocalFile()))
     {
         player.setMedia(mediasUrls[soundType]);
+        player.setVolume(30);
         player.play();
+
     }
 }
 

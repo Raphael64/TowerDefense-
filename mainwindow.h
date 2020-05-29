@@ -35,7 +35,7 @@ public:
 protected:
 	void paintEvent(QPaintEvent *);
 	void mousePressEvent(QMouseEvent *);
-
+    void mousePressEvent2(QMouseEvent *);
 private slots:
 	void updateMap();
 	void gameStart();

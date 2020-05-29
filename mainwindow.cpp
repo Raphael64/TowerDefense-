@@ -82,7 +82,7 @@ void MainWindow::paintEvent(QPaintEvent *)//报游戏结束事项
 		return;
 	}
 
-	QPixmap cachePix(":/image/Bg.png");
+    QPixmap cachePix(":image/Bg.png");
     QPainter cachePainter(&cachePix);
 
 	foreach (const TowerPosition &towerPos, m_towerPositionsList)
@@ -112,9 +112,9 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 {
 	QPoint pressPos = event->pos();
 	auto it = m_towerPositionsList.begin();
-	while (it != m_towerPositionsList.end())
-	{
-		if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
+    while (it != m_towerPositionsList.end())
+    {
+        if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
 		{
 			m_audioPlayer->playSound(TowerPlaceSound);
 			m_playrGold -= TowerCost;
@@ -124,10 +124,32 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
 			m_towersList.push_back(tower);
 			update();
 			break;
-		}
+        }
 
 		++it;
 	}
+}
+
+void MainWindow::mousePressEvent2(QMouseEvent *event)
+{
+    QPoint pressPos = event->pos();
+    auto it = m_towerPositionsList.begin();
+    while (1)
+    {
+        if (canBuyTower() && it->containPoint(pressPos) && it->hasTower())
+        {
+            m_audioPlayer->playSound(TowerPlaceSound);
+            m_playrGold -= TowerCost;
+            it->setHasTower();
+
+            Tower *tower = new Tower(it->centerPos(), this);
+            m_towersList.push_back(tower);
+            update();
+            break;
+        }
+
+        ++it;
+    }
 }
 
 bool MainWindow::canBuyTower() const
@@ -297,6 +319,8 @@ bool MainWindow::loadWave()//读取波数,对添加新的敌人至关重要
         if(m_waves>=2)//不同关卡的不同敌人
         {
             enemy->upgrade();
+
+
         }
 		QMap<QString, QVariant> dict = curWavesInfo[i].toMap();
 		int spawnTime = dict.value("spawnTime").toInt();

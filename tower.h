@@ -26,6 +26,7 @@ public:
 	void removeBullet();
 	void damageEnemy();
 	void lostSightOfEnemy();
+    void upgrade();
 
 private slots:
 	void shootWeapon();

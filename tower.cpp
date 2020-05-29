@@ -115,3 +115,10 @@ void Tower::lostSightOfEnemy()
 	m_fireRateTimer->stop();
 	m_rotationSprite = 0.0;
 }
+
+
+void Tower::upgrade()
+{
+   m_attackRange=200;
+   m_damage=20;
+}
