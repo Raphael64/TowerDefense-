@@ -130,5 +130,194 @@
 			<integer>5000</integer>
 		</dict>
         </array>//第四波
+
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>100</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>200</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>300</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>400</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>600</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>6000</integer>
+        </dict>
+</array>//第五波
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3000</integer>
+        </dict>
+</array>//第六波
+<array>
+
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1500</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2500</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>6000</integer>
+        </dict>
+</array>//第七波
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>4000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>5000</integer>
+        </dict>
+</array>//第八波
+
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>100</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>500</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>600</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>1000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>3000</integer>
+        </dict>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>6000</integer>
+        </dict>
+</array>//第九波
+<array>
+        <dict>
+                <key>data</key>
+                <string></string>
+                <key>spawnTime</key>
+                <integer>2000</integer>
+        </dict>
+</array>//第十波
 </array>
 </plist>

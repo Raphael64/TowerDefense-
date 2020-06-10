@@ -13,7 +13,7 @@
 
 static  int Health_Bar_Width = 40;//之后更改血量一定要记得改血条长度，改最大上限，该当前血量三个指标
 
-const QSize Enemy::ms_fixedSize(104, 104);
+const QSize Enemy::ms_fixedSize(110, 110);
 
 Enemy::Enemy(WayPoint *startWayPoint, MainWindow *game, QPixmap sprite/* = QPixmap(":/image/enemy.png")*/)
 	: QObject(0)
@@ -151,7 +151,7 @@ QPoint Enemy::pos() const
 	return m_pos;
 }
 
-void Enemy::upgrade()
+void Enemy::upgrade1()
 {
 
     Health_Bar_Width=80;
@@ -159,5 +159,37 @@ void Enemy::upgrade()
     m_currentHp=80;
     m_walkingSpeed=3.0;
     m_sprite=QPixmap(":/image/enemy2.png");
+
+}
+
+void Enemy::upgrade2()
+{
+
+    Health_Bar_Width=120;
+    m_maxHp=120;
+    m_currentHp=120;
+    m_walkingSpeed=1.0;
+    m_sprite=QPixmap(":/image/enemy3.png");
+
+}
+void Enemy::upgrade3()
+{
+
+    Health_Bar_Width=180;
+    m_maxHp=180;
+    m_currentHp=180;
+    m_walkingSpeed=1.0;
+    m_sprite=QPixmap(":/image/enemy4.png");
+
+}
+
+void Enemy::upgrade4()
+{
+
+    Health_Bar_Width=300;
+    m_maxHp=300;
+    m_currentHp=300;
+    m_walkingSpeed=1.0;
+    m_sprite=QPixmap(":/image/enemy5.png");
 
 }

@@ -82,7 +82,7 @@ void MainWindow::paintEvent(QPaintEvent *)//报游戏结束事项
 		return;
 	}
 
-    QPixmap cachePix(":image/Bg.png");
+    QPixmap cachePix(":/image/Bg.png");
     QPainter cachePainter(&cachePix);
 
 	foreach (const TowerPosition &towerPos, m_towerPositionsList)
@@ -316,9 +316,33 @@ bool MainWindow::loadWave()//读取波数,对添加新的敌人至关重要
 
     for (int i = 0; i < curWavesInfo.size(); ++i)
     {  Enemy *enemy = new Enemy(startWayPoint, this);
-        if(m_waves>=2)//不同关卡的不同敌人
+        if(m_waves>=9)//不同关卡的不同敌人
         {
-            enemy->upgrade();
+            enemy->upgrade4();
+
+
+        }
+        else if(m_waves>=7)//不同关卡的不同敌人
+        {
+            enemy->upgrade2();
+
+
+        }
+        else if(m_waves>=6)//不同关卡的不同敌人
+        {
+            enemy->upgrade3();
+
+
+        }
+        else if(m_waves>=4)//不同关卡的不同敌人
+        {
+            enemy->upgrade2();
+
+
+        }
+        else if(m_waves>=2)//不同关卡的不同敌人
+        {
+            enemy->upgrade1();
 
 
         }

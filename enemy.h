@@ -17,7 +17,10 @@ class Enemy : public QObject
 public:
     Enemy(WayPoint *startWayPoint, MainWindow *game, QPixmap  sprite =QPixmap(":/image/enemy.png"));
 	~Enemy();
-    void upgrade();
+    void upgrade1();
+    void upgrade2();
+    void upgrade3();
+    void upgrade4();
     void draw(QPainter *painter) const;
 	void move();
 	void getDamage(int damage);

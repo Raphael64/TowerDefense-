@@ -15,7 +15,7 @@ Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/
 	: m_attacking(false)
     , m_attackRange(140)
 	, m_damage(10)
-	, m_fireRate(1000)
+    , m_fireRate(500)
 	, m_rotationSprite(0.0)
 	, m_chooseEnemy(NULL)
 	, m_game(game)
