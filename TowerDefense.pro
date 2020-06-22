@@ -22,7 +22,11 @@ SOURCES += main.cpp\
     enemy.cpp \
     bullet.cpp \
     audioplayer.cpp \
-    plistreader.cpp
+    plistreader.cpp \
+    enemy2.cpp \
+    enemy3.cpp \
+    enemy4.cpp \
+    enemy5.cpp
 
 HEADERS  += mainwindow.h \
     towerposition.h \
@@ -32,7 +36,11 @@ HEADERS  += mainwindow.h \
     enemy.h \
     bullet.h \
     audioplayer.h \
-    plistreader.h
+    plistreader.h \
+    enemy2.h \
+    enemy3.h \
+    enemy4.h \
+    enemy5.h
 
 FORMS    += mainwindow.ui
 
