@@ -46,6 +46,7 @@ private:
 
     QPixmap	 m_sprite;
 	static const QSize ms_fixedSize;
+
 };
 
 #endif // ENEMY_H

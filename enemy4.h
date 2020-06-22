@@ -1,7 +1,9 @@
 #ifndef ENEMY4_H
 #define ENEMY4_H
-#include<enemy.h>
-
+#include <QObject>
+#include <QPoint>
+#include <QSize>
+#include <QPixmap>
 class enemy4
 {
 public:

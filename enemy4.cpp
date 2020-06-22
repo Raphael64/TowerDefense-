@@ -2,5 +2,5 @@
 
 enemy4::enemy4()
 {
-Enemy::upgrade3();
+
 }

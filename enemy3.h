@@ -1,8 +1,12 @@
 #ifndef ENEMY3_H
 #define ENEMY3_H
 
-#include<enemy.h>
-class enemy3:public Enemy
+#include <QObject>
+#include <QPoint>
+#include <QSize>
+#include <QPixmap>
+
+class enemy3
 {
 public:
     enemy3();
