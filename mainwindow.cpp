@@ -2,18 +2,26 @@
 #include "ui_mainwindow.h"
 #include "waypoint.h"
 #include "enemy.h"
-
+#include "tower.h"
+#include"mybutton.h"
+#include"mywindow.h"
 #include "bullet.h"
 #include "audioplayer.h"
 #include "plistreader.h"
 #include <QPainter>
 #include <QMouseEvent>
+#include<QPushButton>
 #include <QtGlobal>
 #include <QMessageBox>
 #include <QTimer>
 #include <QXmlStreamReader>
 #include <QtDebug>
-
+#include<QPixmap>
+#include<QPaintEvent>
+#include<QPushButton>
+#include<QTimer>
+#include <cstdlib>
+#include <ctime>
 static const int TowerCost = 300;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -25,8 +33,11 @@ MainWindow::MainWindow(QWidget *parent)
 	, m_gameEnded(false)
 	, m_gameWin(false)
 {
-	ui->setupUi(this);
 
+
+this->setFixedSize(1060,530);
+
+    //mywindow back_btn clicked emit chooseBack
 	preLoadWavesInfo();
 	loadTowerPositions();
 	addWayPoints();
@@ -38,8 +49,8 @@ MainWindow::MainWindow(QWidget *parent)
 	connect(timer, SIGNAL(timeout()), this, SLOT(updateMap()));
 	timer->start(30);
 
-    // 设置300ms后游戏启动
-    QTimer::singleShot(300, this, SLOT(gameStart()));
+    // 设置1000ms后游戏启动
+    QTimer::singleShot(1000, this, SLOT(gameStart()));
 }
 
 MainWindow::~MainWindow()
@@ -73,61 +84,93 @@ void MainWindow::loadTowerPositions()
 
 void MainWindow::paintEvent(QPaintEvent *)//报游戏结束事项
 {
-	if (m_gameEnded || m_gameWin)
-	{
-		QString text = m_gameEnded ? "YOU LOST!!!" : "YOU WIN!!!";
-		QPainter painter(this);
-		painter.setPen(QPen(Qt::red));
-		painter.drawText(rect(), Qt::AlignCenter, text);
-		return;
-	}
+
+     if (m_gameEnded || m_gameWin)
+    {
+         if(m_gameWin&&m_playerHp>1)
+        {QPainter painter2(this);
+        QPixmap pixmap(":/image/end2.png");//可以重新设置,现在主要任务是主界面
+        painter2.drawPixmap(0,0,this->width(),this->height(),pixmap);
+        }
+         else if(m_gameEnded)
+         {QPainter painter2(this);
+         QPixmap pixmap(":/image/end2.png");//可以重新设置,现在主要任务是主界面
+         painter2.drawPixmap(0,0,this->width(),this->height(),pixmap);
+         }
+       else
+       {QPainter painter2(this);
+         QPixmap pixmap(":/image/win.png");//可以重新设置,现在主要任务是主界面
+         painter2.drawPixmap(0,0,this->width(),this->height(),pixmap);
+       }
+        return;
+    }
+    ;
 
     QPixmap cachePix(":/image/Bg.png");
     QPainter cachePainter(&cachePix);
 
-	foreach (const TowerPosition &towerPos, m_towerPositionsList)
-		towerPos.draw(&cachePainter);
+    foreach (const TowerPosition &towerPos, m_towerPositionsList)
+        towerPos.draw(&cachePainter);
 
-	foreach (const Tower *tower, m_towersList)
-		tower->draw(&cachePainter);
+    foreach (const Tower *tower, m_towersList)
+        tower->draw(&cachePainter);
 
-	foreach (const WayPoint *wayPoint, m_wayPointsList)
-		wayPoint->draw(&cachePainter);
+    foreach (const WayPoint *wayPoint, m_wayPointsList)
+        wayPoint->draw(&cachePainter);
 
-	foreach (const Enemy *enemy, m_enemyList)
+    foreach (const Enemy *enemy, m_enemyList)
         enemy->draw(&cachePainter);
 
-	foreach (const Bullet *bullet, m_bulletList)
-		bullet->draw(&cachePainter);
+    foreach (const Bullet *bullet, m_bulletList)
+        bullet->draw(&cachePainter);
 
-	drawWave(&cachePainter);
-	drawHP(&cachePainter);
-	drawPlayerGold(&cachePainter);
+    drawWave(&cachePainter);
+    drawHP(&cachePainter);
+    drawPlayerGold(&cachePainter);
 
-	QPainter painter(this);
-	painter.drawPixmap(0, 0, cachePix);
+    QPainter painter(this);
+    painter.drawPixmap(0, 0, cachePix);
 }
 
 void MainWindow::mousePressEvent(QMouseEvent *event)
 {
 	QPoint pressPos = event->pos();
 	auto it = m_towerPositionsList.begin();
+    if(event->button()==Qt::LeftButton)
     while (it != m_towerPositionsList.end())
     {
         if (canBuyTower() && it->containPoint(pressPos) && !it->hasTower())
-		{
-			m_audioPlayer->playSound(TowerPlaceSound);
-			m_playrGold -= TowerCost;
-			it->setHasTower();
+        {
+            m_audioPlayer->playSound(TowerPlaceSound);
+            m_playrGold -= TowerCost;
+            it->setHasTower();
 
-			Tower *tower = new Tower(it->centerPos(), this);
-			m_towersList.push_back(tower);
-			update();
-			break;
+            Tower *tower = new Tower(it->centerPos(), this);
+            m_towersList.push_back(tower);
+            update();
+            break;
         }
 
-		++it;
-	}
+        ++it;
+    }
+  if(event->button()==Qt::RightButton)
+      while (it != m_towerPositionsList.end())
+      {
+          if (canBuyTower() && it->containPoint(pressPos) && it->hasTower())
+          {
+              m_audioPlayer->playSound(TowerPlaceSound);
+              m_playrGold -= TowerCost;
+              it->setHasTower();
+
+              Tower *tower = new Tower(it->centerPos(), this);
+              tower->upgrade();
+              m_towersList.push_back(tower);
+              update();
+              break;
+          }
+
+ ++it;
+      }
 }
 
 void MainWindow::mousePressEvent2(QMouseEvent *event)
@@ -313,37 +356,56 @@ bool MainWindow::loadWave()//读取波数,对添加新的敌人至关重要
 
 	WayPoint *startWayPoint = m_wayPointsList.back();
 	QList<QVariant> curWavesInfo = m_wavesInfo[m_waves].toList();
-
+    srand((int)time(0));  // 产生随机种子  把0换成NULL也行
+        int ju=rand()%100;
     for (int i = 0; i < curWavesInfo.size(); ++i)
     {  Enemy *enemy = new Enemy(startWayPoint, this);
-        if(m_waves>=9)//不同关卡的不同敌人
+
+        if(m_waves>=9&&m_playerHp<=2)//不同关卡的不同敌人
+        {
+            enemy->upgrade5();
+
+
+        }
+        else if(m_waves>=9&&m_playerHp>2)
         {
             enemy->upgrade4();
 
 
         }
-        else if(m_waves>=7)//不同关卡的不同敌人
+        else if(m_waves>=7&&(ju%2==0))//不同关卡的不同敌人
         {
             enemy->upgrade2();
 
+         }
+        else if(m_waves>=7&&(ju%2==1))//不同关卡的不同敌人
+        {
+            enemy->upgrade6();
 
-        }
+         }
         else if(m_waves>=6)//不同关卡的不同敌人
         {
             enemy->upgrade3();
 
 
         }
-        else if(m_waves>=4)//不同关卡的不同敌人
+        else if(m_waves>=4&&m_playrGold>=2000)//不同关卡的不同敌人
         {
             enemy->upgrade2();
+            m_playrGold=4000;
 
-
+        }
+        else if(m_waves>=3&&m_playrGold>=1000)//不同关卡的不同敌人
+        {
+            enemy->upgrade1();
         }
         else if(m_waves>=2)//不同关卡的不同敌人
         {
             enemy->upgrade1();
-
+        if(m_playrGold>=1000)
+        {
+            enemy->upgrade3();
+        }
 
         }
 		QMap<QString, QVariant> dict = curWavesInfo[i].toMap();

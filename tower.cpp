@@ -11,17 +11,17 @@
 
 const QSize Tower::ms_fixedSize(84, 84);
 
-Tower::Tower(QPoint pos, MainWindow *game, const QPixmap &sprite/* = QPixmap(":/image/tower.png"*/)
+Tower::Tower(QPoint pos, MainWindow *game)
 	: m_attacking(false)
     , m_attackRange(140)
 	, m_damage(10)
-    , m_fireRate(500)
+    , m_fireRate(1000)
 	, m_rotationSprite(0.0)
 	, m_chooseEnemy(NULL)
 	, m_game(game)
 	, m_pos(pos)
-	, m_sprite(sprite)
-{
+
+{  m_sprite= QPixmap(":/image/tower.png");
 	m_fireRateTimer = new QTimer(this);
 	connect(m_fireRateTimer, SIGNAL(timeout()), this, SLOT(shootWeapon()));
 }
@@ -70,7 +70,7 @@ void Tower::draw(QPainter *painter) const
     //就不绘制初等炮塔的攻击范围了
 
 	// 绘制偏转坐标,由中心+偏移=左上
-	static const QPoint offsetPoint(-ms_fixedSize.width() / 2, -ms_fixedSize.height() / 2);
+    static const QPoint offsetPoint(-ms_fixedSize.width() / 2, -ms_fixedSize.height() / 2-20);
 	// 绘制炮塔并选择炮塔
     painter->translate(m_pos);
 	painter->rotate(m_rotationSprite);
@@ -119,6 +119,7 @@ void Tower::lostSightOfEnemy()
 
 void Tower::upgrade()
 {
-   m_attackRange=200;
-   m_damage=20;
+   m_attackRange=230;
+   m_damage=10;
+   m_sprite== QPixmap(":/image/tower2.png");
 }

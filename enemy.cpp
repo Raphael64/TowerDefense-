@@ -153,13 +153,16 @@ QPoint Enemy::pos() const
 
 void Enemy::upgrade1()
 {
-
+    int ju=1;
     Health_Bar_Width=80;
     m_maxHp=80;
     m_currentHp=80;
     m_walkingSpeed=3.0;
     m_sprite=QPixmap(":/image/enemy2.png");
-
+   if(ju&&m_currentHp<=30)
+   {
+     this->upgrade3();
+   }
 }
 
 void Enemy::upgrade2()
@@ -186,10 +189,30 @@ void Enemy::upgrade3()
 void Enemy::upgrade4()
 {
 
+    Health_Bar_Width=0;
+    m_maxHp=6000;
+    m_currentHp=6000;
+    m_walkingSpeed=2.0;
+    m_sprite=QPixmap(":/image/enemy5.png");
+
+}
+void Enemy::upgrade5()
+{
+
     Health_Bar_Width=300;
     m_maxHp=300;
     m_currentHp=300;
     m_walkingSpeed=1.0;
-    m_sprite=QPixmap(":/image/enemy5.png");
+    m_sprite=QPixmap(":/image/enemy6.png");
+
+}
+void Enemy::upgrade6()
+{
+
+    Health_Bar_Width=50;
+    m_maxHp=50;
+    m_currentHp=50;
+    m_walkingSpeed=6.0;
+    m_sprite=QPixmap(":/image/enemy7.png");
 
 }

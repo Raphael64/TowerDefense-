@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui multimedia
-
+CONFIG += resources_big
 CONFIG += c++11
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -26,7 +26,9 @@ SOURCES += main.cpp\
     enemy2.cpp \
     enemy3.cpp \
     enemy4.cpp \
-    enemy5.cpp
+    enemy5.cpp \
+    mywindow.cpp \
+    mybutton.cpp
 
 HEADERS  += mainwindow.h \
     towerposition.h \
@@ -40,7 +42,9 @@ HEADERS  += mainwindow.h \
     enemy2.h \
     enemy3.h \
     enemy4.h \
-    enemy5.h
+    enemy5.h \
+    mywindow.h \
+    mybutton.h
 
 FORMS    += mainwindow.ui
 

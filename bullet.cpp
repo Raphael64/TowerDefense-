@@ -26,13 +26,13 @@ void Bullet::draw(QPainter *painter) const
 
 void Bullet::move()
 {
-    // 50毫秒内击中敌人
-    static const int duration = 50;
+    // 100毫秒内击中敌人
+    static const int duration = 100;
 	QPropertyAnimation *animation = new QPropertyAnimation(this, "m_currentPos");
 	animation->setDuration(duration);
 	animation->setStartValue(m_startPos);
 	animation->setEndValue(m_targetPos);
-	connect(animation, SIGNAL(finished()), this, SLOT(hitTarget()));
+    connect(animation, SIGNAL(finished()), this, SLOT(hitTarget()));
 
 	animation->start();
 }

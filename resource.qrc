@@ -20,5 +20,16 @@
         <file>image/enemy3.png</file>
         <file>image/enemy4.png</file>
         <file>image/enemy5.png</file>
+        <file>image/add.png</file>
+        <file>image/apic.png</file>
+        <file>image/apic2.png</file>
+        <file>image/button.png</file>
+        <file>image/default.png</file>
+        <file>image/end.png</file>
+        <file>image/end2.png</file>
+        <file>image/enemy6.png</file>
+        <file>image/enemy7.png</file>
+        <file>image/tower2.png</file>
+        <file>image/win.png</file>
     </qresource>
 </RCC>
